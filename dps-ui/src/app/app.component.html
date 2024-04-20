@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col d-flex justify-content-center mt-2">
+      <p class="display-2">DPS Scheduler</p>
+    </div>
+  </div>
+
+  <div *ngIf="state == 'location'" class="row">
+    <div *ngIf="!loading" class="col-12 d-flex justify-content-center mt-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Select appointment type
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item lead" href="#" (click)="setType(71)">Apply for first time Texas DL/Permit</a></li>
+          <li><a class="dropdown-item lead" href="#" (click)="setType(72)">Apply for first time Texas ID</a></li>
+        </ul>
+      </div>
+      <input type="text" placeholder="ZIP Code" [(ngModel)]="zipCode" class="form-control ms-3" style="width: 100px;" maxlength="5" (keydown.enter)="findLocations()">
+      <button type="button" class="btn btn-lg btn-primary ms-3" (click)="findLocations()">Search</button>
+    </div>
+
+    <div *ngIf="!loading && availableLocations.length > 0" class="col-12 d-flex justify-content-center mt-4">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">
+              <input type="checkbox" class="form-check-input table-checkbox" [(ngModel)]="selectAll" (click)="selectAllLocations()"/>
+              <span class="lead ms-2 pointer unselectable" (click)="selectAllLocations()"><b>Select all</b></span>
+            </th>
+            <th scope="col"><span class="lead"><b>Name</b></span></th>
+            <th scope="col"><span class="lead"><b>Address</b></span></th>
+            <th scope="col"><span class="lead"><b>Distance</b></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of availableLocations; index as i" class="col px-1">
+            <th>
+              <input type="checkbox" class="form-check-input table-checkbox" [(ngModel)]="availableLocations[i].selected" (click)="selectLocation(availableLocations[i])"/>
+              <span class="lead ms-2 pointer unselectable" (click)="selectLocation(availableLocations[i])">Select</span>
+            </th>
+            <td><span class="lead">{{l.Name}}</span></td>
+            <td><span class="lead">{{l.Address}}</span> <a type="button" class="btn btn-link pt-0" href="{{l.MapUrl}}" target="_blank">
+              <i class="fa fa-external-link me-2" aria-hidden="true"></i>Open map</a></td>
+            <td><span class="lead">{{l.Distance}} Miles</span></td>
+          </tr>
+        </tbody>s
+      </table>
+    </div>
+
+    <div *ngIf="!loading && availableLocations.length > 0" class="col-12 d-flex justify-content-center mt-4">
+      <button type="button" class="btn btn-lg btn-primary ms-3" (click)="selectDate()">Continue</button>
+    </div>
+
+    <div *ngIf="loading" class="col d-flex justify-content-center mt-4">
+      <i class="fa fa-refresh fa-spin fa-4x mt-4"></i>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="infoModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{popupTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <p class="lead">{{popupDescription}}</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
