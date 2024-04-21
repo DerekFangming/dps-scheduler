@@ -44,12 +44,71 @@
               <i class="fa fa-external-link me-2" aria-hidden="true"></i>Open map</a></td>
             <td><span class="lead">{{l.Distance}} Miles</span></td>
           </tr>
-        </tbody>s
+        </tbody>
       </table>
     </div>
 
     <div *ngIf="!loading && availableLocations.length > 0" class="col-12 d-flex justify-content-center mt-4">
       <button type="button" class="btn btn-lg btn-primary ms-3" (click)="selectDate()">Continue</button>
+    </div>
+
+    <div *ngIf="loading" class="col d-flex justify-content-center mt-4">
+      <i class="fa fa-refresh fa-spin fa-4x mt-4"></i>
+    </div>
+  </div>
+
+  <div *ngIf="state == 'config'" class="row">
+    <div *ngIf="!loading" class="col-4 mt-4 pe-0">
+      <div class="card">
+        <div class="card-body">
+          <p class="lead"><b>Personal Info</b></p>
+          <div class="mb-3 row mt-3">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Firstname</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "Firstname">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Lastname</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "Lastname">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Date of Birth</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "MM/DD/YYYY">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Last four of SSN</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "1234">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Phone number</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "Numbers only, 5121234567">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="col-6 d-flex justify-content-center mt-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="lead"><b>Personal Info</b></p>
+           
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-5 col-form-label">Phone number</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder = "Numbers only, 5121234567">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div *ngIf="loading" class="col d-flex justify-content-center mt-4">
@@ -75,7 +134,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">确定</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
       </div>
     </div>
   </div>

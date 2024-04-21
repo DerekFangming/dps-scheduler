@@ -330,3 +330,300 @@ export function locationResponse() {
         }
     ]
 }
+
+export function locationDateResponse() {
+    return {
+        "604": {
+            "MoreDatesAvailable": false,
+            "LocationAvailabilityDates": [
+                {
+                    "LocationId": 604,
+                    "ServiceTypeId": 71,
+                    "AvailabilityDate": "2024-07-18T00:00:00",
+                    "FormattedAvailabilityDate": "7/18/2024",
+                    "FormattedAvailabilityDateMonth": "7",
+                    "FormattedAvailabilityDateDay": "18",
+                    "FormattedAvailabilityDateYear": "2024",
+                    "DayOfWeek": "Thursday",
+                    "AvailableTimeSlots": [
+                        {
+                            "StartDateTime": "2024-07-18T09:20:00",
+                            "FormattedStartDateTime": "7/18/2024 9:20 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 9:20 AM",
+                            "EndDateTime": "2024-07-18T09:40:00",
+                            "FormattedTime": "9:20 AM",
+                            "Duration": 20,
+                            "SlotId": 16577363
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T10:20:00",
+                            "FormattedStartDateTime": "7/18/2024 10:20 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 10:20 AM",
+                            "EndDateTime": "2024-07-18T10:40:00",
+                            "FormattedTime": "10:20 AM",
+                            "Duration": 20,
+                            "SlotId": 16577366
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T10:40:00",
+                            "FormattedStartDateTime": "7/18/2024 10:40 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 10:40 AM",
+                            "EndDateTime": "2024-07-18T11:00:00",
+                            "FormattedTime": "10:40 AM",
+                            "Duration": 20,
+                            "SlotId": 16577367
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T11:00:00",
+                            "FormattedStartDateTime": "7/18/2024 11:00 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 11:00 AM",
+                            "EndDateTime": "2024-07-18T11:20:00",
+                            "FormattedTime": "11:00 AM",
+                            "Duration": 20,
+                            "SlotId": 16577368
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T11:20:00",
+                            "FormattedStartDateTime": "7/18/2024 11:20 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 11:20 AM",
+                            "EndDateTime": "2024-07-18T11:40:00",
+                            "FormattedTime": "11:20 AM",
+                            "Duration": 20,
+                            "SlotId": 16577369
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T11:40:00",
+                            "FormattedStartDateTime": "7/18/2024 11:40 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 11:40 AM",
+                            "EndDateTime": "2024-07-18T12:00:00",
+                            "FormattedTime": "11:40 AM",
+                            "Duration": 20,
+                            "SlotId": 16577370
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T14:00:00",
+                            "FormattedStartDateTime": "7/18/2024 2:00 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 2:00 PM",
+                            "EndDateTime": "2024-07-18T14:20:00",
+                            "FormattedTime": "2:00 PM",
+                            "Duration": 20,
+                            "SlotId": 16577425
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T14:20:00",
+                            "FormattedStartDateTime": "7/18/2024 2:20 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 2:20 PM",
+                            "EndDateTime": "2024-07-18T14:40:00",
+                            "FormattedTime": "2:20 PM",
+                            "Duration": 20,
+                            "SlotId": 16577426
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T14:40:00",
+                            "FormattedStartDateTime": "7/18/2024 2:40 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 2:40 PM",
+                            "EndDateTime": "2024-07-18T15:00:00",
+                            "FormattedTime": "2:40 PM",
+                            "Duration": 20,
+                            "SlotId": 16577427
+                        },
+                        {
+                            "StartDateTime": "2024-07-18T15:00:00",
+                            "FormattedStartDateTime": "7/18/2024 3:00 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "18",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "18/2024 3:00 PM",
+                            "EndDateTime": "2024-07-18T15:20:00",
+                            "FormattedTime": "3:00 PM",
+                            "Duration": 20,
+                            "SlotId": 16577428
+                        }
+                    ]
+                },
+                {
+                    "LocationId": 604,
+                    "ServiceTypeId": 71,
+                    "AvailabilityDate": "2024-07-19T00:00:00",
+                    "FormattedAvailabilityDate": "7/19/2024",
+                    "FormattedAvailabilityDateMonth": "7",
+                    "FormattedAvailabilityDateDay": "19",
+                    "FormattedAvailabilityDateYear": "2024",
+                    "DayOfWeek": "Friday",
+                    "AvailableTimeSlots": [
+                        {
+                            "StartDateTime": "2024-07-19T10:20:00",
+                            "FormattedStartDateTime": "7/19/2024 10:20 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "19",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "19/2024 10:20 AM",
+                            "EndDateTime": "2024-07-19T10:40:00",
+                            "FormattedTime": "10:20 AM",
+                            "Duration": 20,
+                            "SlotId": 16577378
+                        },
+                        {
+                            "StartDateTime": "2024-07-19T11:40:00",
+                            "FormattedStartDateTime": "7/19/2024 11:40 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "19",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "19/2024 11:40 AM",
+                            "EndDateTime": "2024-07-19T12:00:00",
+                            "FormattedTime": "11:40 AM",
+                            "Duration": 20,
+                            "SlotId": 16577382
+                        },
+                        {
+                            "StartDateTime": "2024-07-19T14:20:00",
+                            "FormattedStartDateTime": "7/19/2024 2:20 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "19",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "19/2024 2:20 PM",
+                            "EndDateTime": "2024-07-19T14:40:00",
+                            "FormattedTime": "2:20 PM",
+                            "Duration": 20,
+                            "SlotId": 16577430
+                        },
+                        {
+                            "StartDateTime": "2024-07-19T14:40:00",
+                            "FormattedStartDateTime": "7/19/2024 2:40 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "19",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "19/2024 2:40 PM",
+                            "EndDateTime": "2024-07-19T15:00:00",
+                            "FormattedTime": "2:40 PM",
+                            "Duration": 20,
+                            "SlotId": 16577431
+                        }
+                    ]
+                }
+            ],
+            "FirstAvailableDate": "2024-07-18T09:20:00",
+            "NextAvailableGroupDate": null,
+            "LocationId": 604
+        },
+        "660": {
+            "MoreDatesAvailable": false,
+            "LocationAvailabilityDates": [
+                {
+                    "LocationId": 660,
+                    "ServiceTypeId": 71,
+                    "AvailabilityDate": "2024-07-11T00:00:00",
+                    "FormattedAvailabilityDate": "7/11/2024",
+                    "FormattedAvailabilityDateMonth": "7",
+                    "FormattedAvailabilityDateDay": "11",
+                    "FormattedAvailabilityDateYear": "2024",
+                    "DayOfWeek": "Thursday",
+                    "AvailableTimeSlots": [
+                        {
+                            "StartDateTime": "2024-07-11T10:50:00",
+                            "FormattedStartDateTime": "7/11/2024 10:50 AM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "11",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "11/2024 10:50 AM",
+                            "EndDateTime": "2024-07-11T11:10:00",
+                            "FormattedTime": "10:50 AM",
+                            "Duration": 20,
+                            "SlotId": 16578826
+                        },
+                        {
+                            "StartDateTime": "2024-07-11T16:10:00",
+                            "FormattedStartDateTime": "7/11/2024 4:10 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "11",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "11/2024 4:10 PM",
+                            "EndDateTime": "2024-07-11T16:30:00",
+                            "FormattedTime": "4:10 PM",
+                            "Duration": 20,
+                            "SlotId": 16578820
+                        },
+                        {
+                            "StartDateTime": "2024-07-11T16:30:00",
+                            "FormattedStartDateTime": "7/11/2024 4:30 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "11",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "11/2024 4:30 PM",
+                            "EndDateTime": "2024-07-11T16:50:00",
+                            "FormattedTime": "4:30 PM",
+                            "Duration": 20,
+                            "SlotId": 16578819
+                        },
+                        {
+                            "StartDateTime": "2024-07-11T16:50:00",
+                            "FormattedStartDateTime": "7/11/2024 4:50 PM",
+                            "FormattedStartDateMonth": "7",
+                            "FormattedStartDateDay": "11",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "11/2024 4:50 PM",
+                            "EndDateTime": "2024-07-11T17:10:00",
+                            "FormattedTime": "4:50 PM",
+                            "Duration": 20,
+                            "SlotId": 16578818
+                        }
+                    ]
+                },
+                {
+                    "LocationId": 660,
+                    "ServiceTypeId": 71,
+                    "AvailabilityDate": "2024-08-09T00:00:00",
+                    "FormattedAvailabilityDate": "8/9/2024",
+                    "FormattedAvailabilityDateMonth": "8",
+                    "FormattedAvailabilityDateDay": "9",
+                    "FormattedAvailabilityDateYear": "2024",
+                    "DayOfWeek": "Friday",
+                    "AvailableTimeSlots": [
+                        {
+                            "StartDateTime": "2024-08-09T11:10:00",
+                            "FormattedStartDateTime": "8/9/2024 11:10 AM",
+                            "FormattedStartDateMonth": "8",
+                            "FormattedStartDateDay": "9",
+                            "FormattedStartDateYear": "2024",
+                            "FormattedStartDateDayYearTime": "9/2024 11:10 AM",
+                            "EndDateTime": "2024-08-09T11:30:00",
+                            "FormattedTime": "11:10 AM",
+                            "Duration": 20,
+                            "SlotId": 15955522
+                        }
+                    ]
+                }
+            ],
+            "FirstAvailableDate": "2024-07-11T10:50:00",
+            "NextAvailableGroupDate": null,
+            "LocationId": 660
+        }
+    }
+}

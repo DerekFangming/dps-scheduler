@@ -17,7 +17,8 @@ declare var $: any
 })
 export class AppComponent {
 
-  state = 'location'
+  // state = 'location'
+  state = 'config'
   loading = false
 
   popupTitle = ''
@@ -81,6 +82,8 @@ export class AppComponent {
     if (!selected) {
       return this.showError('At least one location needs to be selected')
     }
+
+    this.state = 'config'
   }
 
   showError(message: string) {

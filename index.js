@@ -4,7 +4,7 @@ import cors from 'cors'
 import path from 'path'
 import axios from "axios"
 
-import { locationResponse } from './constant.js'
+import { locationResponse, locationDateResponse } from './constant.js'
 
 const port = '9003'
 const app = express()
@@ -40,42 +40,55 @@ app.get('/api/available-locations', async (req, res) => {
     return res.status(400).json({message: 'Invalid zipcode or type'})
   }
 
-  let payload = {
-    CityName: "",
-    PreferredDay: 0,
-    TypeId: req.query.type,
-    ZipCode: req.query.zipcode
-  }
-  // let response = await http.post('api/AvailableLocation', payload) TODO
-  // res.status(200).json(response.data)
+  // try {
+  //   let response = await http.post('api/AvailableLocation', {
+  //     CityName: "",
+  //     PreferredDay: 0,
+  //     TypeId: req.query.type,
+  //     ZipCode: req.query.zipcode
+  //   })
+  //   res.status(200).json(response.data)
+  // } catch (e) {
+  //   res.status(500).json({message: e.message})
+  // }
 
   res.status(200).json(locationResponse())
 })
 
 app.get('/api/available-location-dates', async (req, res) => {
 
-  if (!req.query.locations) {
-    return res.status(400).json({message: 'Invalid locations'})
+  if (!req.query.locations || !req.query.type) {
+    return res.status(400).json({message: 'Invalid locations or type'})
   }
 
-  let locations = req.query.locations.split(',')
-  console.log(locations)
-
-  let payload = {
-    CityName: "",
-    PreferredDay: 0,
-    TypeId: req.query.type,
-    ZipCode: req.query.zipcode
+  let requests = []
+  for (let location of req.query.locations.split(',')) {
+    requests.push(http.post('api/AvailableLocationDates', {
+      LocationId: location,
+      SameDay: false,
+      PreferredDay: 0,
+      TypeId: req.query.type
+    }))
   }
-  // let response = await http.post('api/AvailableLocation', payload) TODO
-  // res.status(200).json(response.data)
 
-  res.status(200).json(locationResponse())
+  // try {
+  //   let responses = await Promise.all(requests)
+
+  //   let out = {}
+  //   for (let response of responses) {
+  //     out[response.data.LocationId] = response.data
+  //   }
+
+  //   res.status(200).json(out)
+  // } catch (e) {
+  //   res.status(500).json({message: e.message})
+  // }
+
+  res.status(200).json(locationDateResponse())
 })
-
 
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`DPS app listening on port ${port}`)
 })
