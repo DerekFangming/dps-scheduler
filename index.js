@@ -12,7 +12,7 @@ app.use(bodyParser.json({limit: '100mb'}), cors())
 const __dirname = path.resolve()
 
 const requestedWith = 'X-Requested-With'
-const devMode = true
+const devMode = false
 
 const http = axios.create({
   baseURL: 'https://publicapi.txdpsscheduler.com',
