@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { Component, signal } from '@angular/core'
+import { ChangeDetectorRef, Component, Injector, OnInit, afterNextRender, inject, signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { environment } from '../environments/environment'
 import { FormsModule } from '@angular/forms'
@@ -22,34 +22,26 @@ const requestedWith = 'X-Requested-With'
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   state = 'location'
-  // state = 'config'
   loading = false
   started = false
 
   popupTitle = ''
   popupDescription = ''
+  windowWidth = 1920
 
-  // apptType = 0 TODO
-  // zipCode = signal('')
-  apptType = 71
+  apptType = 0
+  zipCode = signal('')
   apptName = ''
-  zipCode = signal('78754')
   selectAll = signal(false)
 
-  // firstName = signal('')
-  // lastName = signal('')
-  // dob = signal('')
-  // ssn = signal('')
-  // email = signal('')
-  // phone = signal('')
-  firstName = signal('Jianguo')
-  lastName = signal('Luo')
-  dob = signal('07/21/1964')
-  ssn = signal('9999')
-  email = signal('synfm@126.com')
+  firstName = signal('')
+  lastName = signal('')
+  dob = signal('')
+  ssn = signal('')
+  email = signal('')
   phone = signal('')
 
   cancelExisting = signal(true)
@@ -73,13 +65,21 @@ export class AppComponent {
     {type: 121, name: 'Drive TestNon-CDL Class A/Class B'}
   ]
 
-  constructor(private http: HttpClient, public sanitizer: DomSanitizer) {
-    this.addTimePreferences(30)
+  constructor(private http: HttpClient, public sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {}
+
+  injector = inject(Injector)
+  ngOnInit() {
+    this.addTimePreferences(10)
+    afterNextRender(() => {
+      this.windowWidth = window.screen.width
+      this.cdr.detectChanges()
+    }, {injector: this.injector})
   }
 
   setType(type: any) {
     this.apptType = type.type
     this.apptName = type.name
+    this.showError(window.screen.height + ' ' + window.screen.width)
   }
 
   findLocations() {
@@ -194,7 +194,6 @@ export class AppComponent {
 
           this.http.get<any[]>(environment.urlPrefix + 'api/available-location-dates', {params: {
             locations: this.availableLocations.filter(al => al.selected()).map(al => al.Id).join(','),
-            // locations: '660,604',
             type: this.apptType 
           }}).subscribe({
             next: async res =>  {
@@ -318,4 +317,3 @@ export class AppComponent {
     $("#infoModal").modal('show')
   }
 }
-//

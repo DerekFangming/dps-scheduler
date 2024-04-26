@@ -1,6 +1,13 @@
 
 
 <div class="container">
+  <div *ngIf="windowWidth < 1500" class="row">
+    <div class="col">
+      <div class="alert alert-warning" role="alert">
+        The app does not work well on smaller devices. For a better experience please run on a PC.
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-2 mt-2">
       <button *ngIf="state=='config'" class="btn btn-lg btn-outline-primary" (click)="back()">Back</button>
