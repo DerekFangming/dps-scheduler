@@ -1,6 +1,11 @@
+
+
 <div class="container">
   <div class="row">
-    <div class="col d-flex justify-content-center mt-2">
+    <div class="col-2 mt-2">
+      <button *ngIf="state=='config'" class="btn btn-lg btn-outline-primary" (click)="back()">Back</button>
+    </div>
+    <div class="col-8 d-flex justify-content-center mt-2">
       <p class="display-2">DPS Scheduler</p>
     </div>
   </div>
@@ -9,11 +14,12 @@
     <div *ngIf="!loading" class="col-12 d-flex justify-content-center mt-4">
       <div class="btn-group">
         <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Select appointment type
+          {{apptName == '' ? 'Select appointment type' : apptName}}
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item lead" href="#" (click)="setType(71)">Apply for first time Texas DL/Permit</a></li>
-          <li><a class="dropdown-item lead" href="#" (click)="setType(72)">Apply for first time Texas ID</a></li>
+          <li *ngFor="let t of appointmentTypes; index as i">
+            <a class="dropdown-item lead" href="#" (click)="setType(t)">{{t.name}}</a>
+          </li>
         </ul>
       </div>
       <input type="text" placeholder="ZIP Code" [(ngModel)]="zipCode" class="form-control ms-3" style="width: 100px;" maxlength="5" (keydown.enter)="findLocations()">
@@ -58,55 +64,131 @@
   </div>
 
   <div *ngIf="state == 'config'" class="row">
-    <div *ngIf="!loading" class="col-4 mt-4 pe-0">
+
+    <div *ngIf="!loading" class="col-4 mt-4">
       <div class="card">
         <div class="card-body">
-          <p class="lead"><b>Personal Info</b></p>
-          <div class="mb-3 row mt-3">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Firstname</label>
-            <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "Firstname">
+          <p class="lead"><b>Preferred Time Slots</b></p>
+           
+          <div class="row">
+            <div *ngFor="let t of timePreferences; index as i" class="col mb-3">
+              <div class="row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">{{t.getLabel()}}</label>
+                <div class="col-sm-8 ps-0">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn" [ngClass]="t.allDay?'btn-success':'btn-outline-success'" (click)="t.setAllDay()" [disabled]="started">All Day</button>
+                    <button type="button" class="btn" [ngClass]="t.morning?'btn-success':'btn-outline-success'" (click)="t.setMorning()" [disabled]="started">Morning</button>
+                    <button type="button" class="btn" [ngClass]="t.afternoon?'btn-success':'btn-outline-success'" (click)="t.setAfternoon()" [disabled]="started">Afternoon</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Lastname</label>
-            <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "Lastname">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Date of Birth</label>
-            <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "MM/DD/YYYY">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Last four of SSN</label>
-            <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "1234">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Phone number</label>
-            <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "Numbers only, 5121234567">
+
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-outline-success w-100 mt-2" (click)="addTimePreferences(5)" [disabled]="started">Add more days</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div *ngIf="!loading" class="col-6 d-flex justify-content-center mt-4">
+    <div *ngIf="!loading" class="col-4 mt-4">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body pb-0">
           <p class="lead"><b>Personal Info</b></p>
-           
-          <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-5 col-form-label">Phone number</label>
+          <div class="mb-3 row mt-3">
+            <label class="col-sm-5 col-form-label">Firstname<span class="text-danger ms-1">*</span></label>
             <div class="col-sm-7 ps-0">
-              <input type="text" class="form-control" placeholder = "Numbers only, 5121234567">
+              <input type="text" class="form-control" placeholder="Firstname" [(ngModel)]="firstName" [disabled]="started">
             </div>
           </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">Lastname<span class="text-danger ms-1">*</span></label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder="Lastname" [(ngModel)]="lastName" [disabled]="started">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">Date of Birth<span class="text-danger ms-1">*</span></label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder="MM/DD/YYYY" [(ngModel)]="dob" [disabled]="started">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">Last four of SSN<span class="text-danger ms-1">*</span></label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder="1234" [(ngModel)]="ssn" [disabled]="started">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">Email<span class="text-danger ms-1">*</span></label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder="first.last@example.com" [(ngModel)]="email" [disabled]="started">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">Phone number1</label>
+            <div class="col-sm-7 ps-0">
+              <input type="text" class="form-control" placeholder="Numbers only, optional" [(ngModel)]="phone" [disabled]="started">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-2">
+        <div class="card-body">
+          <p class="lead"><b>Scheduling Configuration</b></p>
+          <div class="mb-3 row mt-3">
+            <label class="col-sm-8 col-form-label">Cancel Existing Appointment
+              <i class="fa fa-lg fa-question-circle-o pointer" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="right"
+              title="If there is existing appointment, cancel it before booking a new one. Existing appointment will not be canceled until a new one is found."></i>
+            </label>
+            <div class="col-sm-4 ps-0 pt-1">
+              <input type="checkbox" class="form-check-input table-checkbox mt-2" [(ngModel)]="cancelExisting" [disabled]="started"/>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-8 col-form-label">Cooldown Seconds
+              <i class="fa fa-lg fa-question-circle-o pointer" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="right"
+              title="Interval between the current and the next check for available dates. The minimum is 30 seconds."></i>
+            </label>
+            <div class="col-sm-4 ps-0">
+              <input type="text" class="form-control" [(ngModel)]="checkInterval" [disabled]="started">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="!loading" class="col-4 mt-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="lead"><b>Console</b></p>
+           
+          <div class="row mx-0">
+            <div class="card px-0">
+              <div class="card-body px-1 py-1" style="height: 60vh;overflow: auto;">
+                <p *ngFor="let l of logs; index as i" class="mb-0">
+                  <span [ngClass]="l.error?'text-danger':'text-success'">{{l.date.toLocaleTimeString('en-US', { hour12: false})}}</span> {{l.message}}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mx-0 mt-2">
+            <div class="col px-0">
+              <div *ngIf="started" class="alert alert-success mb-1" role="alert">
+                Running, do not close the browser. You will see a popup when an appointment is scheduled.
+              </div>
+              <button *ngIf="!started" type="button" class="btn btn-primary w-100 " (click)="start()">Start</button>
+              <button *ngIf="started" type="button" class="btn btn-warning w-100" (click)="stop()">Stop</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -128,7 +210,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col">
-            <p class="lead">{{popupDescription}}</p>
+            <p class="lead" [innerHtml]="sanitizer.bypassSecurityTrustHtml(popupDescription)"></p>
           </div>
         </div>
 
