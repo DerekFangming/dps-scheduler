@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   phone = signal('')
 
   cancelExisting = signal(true)
-  checkInterval = signal(30)
+  checkInterval = signal(60)
 
   availableLocations: AvailableLocation[] = []
   timePreferences: TimePreference[] = []
