@@ -79,7 +79,6 @@ export class AppComponent implements OnInit {
   setType(type: any) {
     this.apptType = type.type
     this.apptName = type.name
-    this.showError(window.screen.height + ' ' + window.screen.width)
   }
 
   findLocations() {

@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import { locationResponse, locationDateResponse, bookingResponse } from './constant.js'
 
-const port = '9003'
+const port = '9005'
 const app = express()
 app.use(bodyParser.json({limit: '100mb'}), cors())
 const __dirname = path.resolve()

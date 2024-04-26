@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ui": "cd dps-ui && ng serve",
-    "build-ui": ""
+    "build-ui": "cd dps-ui && ng build"
   },
   "author": "",
   "type": "module",
