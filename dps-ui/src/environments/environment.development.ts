@@ -1,3 +1,3 @@
 export const environment = {
-    urlPrefix: 'http://localhost:9005/'
+    urlPrefix: 'http://10.0.1.50:9005/'
 }

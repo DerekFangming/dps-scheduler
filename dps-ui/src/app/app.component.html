@@ -9,17 +9,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2 mt-2">
+    <div class="col-1 mt-2">
       <button *ngIf="state=='config'" class="btn btn-lg btn-outline-secondary" (click)="back()">Back</button>
     </div>
-    <div class="col-8 d-flex justify-content-center mt-2">
+    <div class="col-10 d-flex justify-content-center mt-2">
       <p class="display-2">DPS Scheduler</p>
     </div>
   </div>
 
   <div *ngIf="state == 'location'" class="row">
-    <div *ngIf="!loading" class="col-12 d-flex justify-content-center mt-4">
-      <div class="btn-group">
+    <div *ngIf="!loading" class="col-12 d-flex justify-content-center mt-4 flex-wrap">
+      <div class="btn-group mt-2">
         <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           {{apptName == '' ? 'Select appointment type' : apptName}}
         </button>
@@ -29,8 +29,8 @@
           </li>
         </ul>
       </div>
-      <input type="text" placeholder="ZIP Code" [(ngModel)]="zipCode" class="form-control ms-3" style="width: 100px;" maxlength="5" (keydown.enter)="findLocations()">
-      <button type="button" class="btn btn-lg btn-primary ms-3" (click)="findLocations()">Search</button>
+      <input type="text" placeholder="ZIP Code" [(ngModel)]="zipCode" class="form-control ms-3 mt-2" style="width: 100px;" maxlength="5" (keydown.enter)="findLocations()">
+      <button type="button" class="btn btn-lg btn-primary ms-3 mt-2" (click)="findLocations()">Search</button>
     </div>
 
     <div *ngIf="!loading && availableLocations.length > 0" class="col-12 d-flex justify-content-center mt-4">
@@ -72,7 +72,7 @@
 
   <div *ngIf="state == 'config'" class="row">
 
-    <div *ngIf="!loading" class="col-4 mt-4">
+    <div *ngIf="!loading" class="col-lg-4 col-md-12 mt-4">
       <div class="card">
         <div class="card-body">
           <p class="lead"><b>Preferred Time Slots</b></p>
@@ -101,7 +101,7 @@
       </div>
     </div>
 
-    <div *ngIf="!loading" class="col-4 mt-4">
+    <div *ngIf="!loading" class="col-lg-4 col-md-12 mt-4">
       <div class="card">
         <div class="card-body pb-0">
           <p class="lead"><b>Personal Info</b></p>
@@ -171,7 +171,7 @@
 
     </div>
 
-    <div *ngIf="!loading" class="col-4 mt-4">
+    <div *ngIf="!loading" class="col-lg-4 col-md-12 mt-4">
       <div class="card">
         <div class="card-body">
           <p class="lead"><b>Console</b></p>
