@@ -5,3 +5,6 @@ COPY . .
 
 RUN npm i
 RUN cd dps-ui && npm i
+RUN npm run build-ui
+RUN ls
+RUN ls public
