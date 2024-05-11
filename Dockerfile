@@ -10,3 +10,7 @@ RUN cd dps-ui && npm i
 RUN npm run build-ui
 RUN ls
 RUN ls public
+
+RUN rm -r dps-ui
+
+CMD ["node", "."]
