@@ -1,4 +1,4 @@
-FROM node:22-alpine3.18 AS builder
+FROM node:22-alpine3.19 AS builder
 
 WORKDIR /app
 COPY . .
@@ -12,7 +12,7 @@ RUN npm run build-ui
 RUN ncc build index.js -o dist
 
 
-FROM node:22-alpine3.18
+FROM node:22-alpine3.19
 WORKDIR /app
 COPY --from=builder /app/dist .
 CMD ["node", "."]
