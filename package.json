@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ui": "cd dps-ui && ng serve",
-    "build-ui": "cd dps-ui && ng build -c production --verbose"
+    "ui": "cd nba-ui && ng serve",
+    "build": "npm i && cd dps-ui && npm i && ng build --configuration production",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "type": "module",
